@@ -1,0 +1,38 @@
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fffbeb; /* amber-50 base background */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+/* Medieval theme base colors */
+:root {
+  --color-primary: #92400e;  /* amber-800 */
+  --color-secondary: #fef3c7; /* amber-100 */
+  --color-text: #78350f;     /* amber-900 */
+  --color-background: #fffbeb; /* amber-50 */
+}
+
+/* Default link styles - medieval theme */
+a {
+  color: var(--color-primary);
+  text-decoration: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-text);
+}

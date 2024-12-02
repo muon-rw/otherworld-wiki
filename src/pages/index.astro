@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../assets/otherworld.png';
+
+const submods = [
+    {
+        title: 'Otherworld Origins',
+        description: 'Races, Classes, and more based off of the DnD 5e Handbook and inspired by Baldur\'s Gate 3, designed for Otherworld and closely integrated with Just Leveling, Iron\'s Spellbooks, and more',
+        path: '/mods/otherworld-origins',
+        color: 'blue'
+    },
+    {
+        title: 'Otherworld Apotheosis - Page Under Construction!',
+        description: 'Major overhauls to Apotheosis, integrating it with Otherworld\'s leveling system, re-balancing every single affix and gem, and adding tons of modpack-exclusive content.',
+        path: '/mods/otherworld-apotheosis',
+        color: 'emerald'
+    }
+];
+---
+
+<Layout title="Otherworld - Wiki">
+    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
+        <div class="text-center mb-12">
+            <div class="w-full max-w-[90vw] md:max-w-7xl mx-auto pt-2 group relative z-0">
+                <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    <Image
+                            src={otherworldBanner}
+                            alt="Otherworld"
+                            class="w-full h-auto"
+                    />
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 mt-8">
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl text-stone-300 font-medium tracking-wide">
+                        A DnD-themed fantasy modpack featuring ... stuff <br /> Todo: update this description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                Custom Content
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                {submods.map(mod => {
+                    const bgColor = `from-${mod.color}-900/20 to-${mod.color}-900/10`;
+                    const borderColor = `border-${mod.color}-500/10`;
+                    const textColor = `text-${mod.color}-200`;
+                    const hoverTextColor = `group-hover:text-${mod.color}-100`;
+
+                    return (
+                            <a href={mod.path}
+                               class={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl 
+                                  transition-all duration-300 hover:-translate-y-0.5
+                                  bg-gradient-to-br ${bgColor} border ${borderColor}`}>
+                                <div class="relative p-6 z-10">
+                                    <h3 class={`text-xl font-bold mb-2 ${textColor} ${hoverTextColor}
+                                           transition-colors drop-shadow-lg`}>
+                                        {mod.title}
+                                    </h3>
+                                    <p class={`${textColor}/80 ${hoverTextColor} transition-colors`}>
+                                        {mod.description}
+                                    </p>
+                                </div>
+                            </a>
+                    );
+                })}
+            </div>
+
+            <div class="mt-16">
+                <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                    Coming Soon
+                </h2>
+                <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
+                    <h3 class="text-xl font-bold mb-4 text-purple-200">Documentation In Progress</h3>
+                    <ul class="list-disc list-inside text-purple-100/80 space-y-2">
+                        <li>Player Leveling System</li>
+                        <li>Monster Scaling</li>
+                        <li>Community Guides</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

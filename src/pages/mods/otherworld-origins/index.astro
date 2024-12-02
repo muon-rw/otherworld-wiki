@@ -1,0 +1,96 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../../../assets/otherworld.png';
+---
+
+<Layout title="Otherworld Origins">
+    <main class="container mx-auto px-4 py-8 min-h-screen bg-noise">
+        <div class="max-w-4xl mx-auto">
+            {/* Banner Image */}
+            <div class="w-full mb-8 group relative z-0">
+                <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    <Image
+                            src={otherworldBanner}
+                            alt="Otherworld"
+                            class="w-full h-auto rounded-lg"
+                    />
+                </div>
+            </div>
+
+            <h1 class="text-4xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
+                Otherworld Origins
+            </h1>
+
+            <div class="prose prose-amber mx-auto mb-12">
+                <div class="p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                           border border-amber-200 rounded-lg shadow-md">
+                    <p class="text-amber-900 mb-4">
+                        Otherworld Origins brings the depth of tabletop character creation to Minecraft,
+                        allowing players to forge unique heroes through meaningful choices of race, class,
+                        and abilities.
+                    </p>
+                    <p class="text-amber-900">
+                        As you level up, you'll gain access to new feats and abilities, creating a
+                        character that truly reflects your preferred playstyle and role within the world.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="/mods/otherworld-origins/races"
+                   class="group p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                          border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                          transition-all duration-200 ease-in-out">
+                    <h2 class="text-2xl font-medieval text-amber-900 mb-3 group-hover:text-amber-700">
+                        Races
+                    </h2>
+                    <p class="text-amber-800">
+                        Discover the diverse races of the realm, each with unique abilities and heritage.
+                    </p>
+                </a>
+
+                <a href="/mods/otherworld-origins/classes"
+                   class="group p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                          border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                          transition-all duration-200 ease-in-out">
+                    <h2 class="text-2xl font-medieval text-amber-900 mb-3 group-hover:text-amber-700">
+                        Classes
+                    </h2>
+                    <p class="text-amber-800">
+                        Master the arts of various classes, from mighty warriors to mystical spellcasters.
+                    </p>
+                </a>
+
+                <a href="/mods/otherworld-origins/cantrips-and-feats"
+                   class="group p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                          border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                          transition-all duration-200 ease-in-out">
+                    <h2 class="text-2xl font-medieval text-amber-900 mb-3 group-hover:text-amber-700">
+                        Cantrips & Feats
+                    </h2>
+                    <p class="text-amber-800">
+                        Enhance your character with magical cantrips and powerful feats.
+                    </p>
+                </a>
+
+                <a href="https://github.com/muon-rw/Otherworld-Origins"
+                   target="_blank"
+                   class="group p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                          border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                          transition-all duration-200 ease-in-out">
+                    <h2 class="text-2xl font-medieval text-amber-900 mb-3 group-hover:text-amber-700 flex items-center">
+                        Source Code
+                        <span class="inline-block ml-1 transform group-hover:translate-x-1 transition-transform">
+                            →
+                        </span>
+                    </h2>
+                    <p class="text-amber-800">
+                        View the mod's source code and contribute on GitHub.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </main>
+</Layout>

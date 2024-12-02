@@ -1,0 +1,87 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { fetchLangData } from '../../../utils/fetchLangData';
+
+const langData = await fetchLangData();
+---
+
+<Layout title="Cantrips & Feats - Otherworld Origins">
+    <main class="container mx-auto px-4 py-8 min-h-screen bg-noise">
+        <h1 class="text-4xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
+            Cantrips & Feats
+        </h1>
+
+        <div class="grid gap-8">
+            {/* Cantrips Section */}
+            <details class="group" open>
+                <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-100 to-amber-200
+                             border border-amber-300 rounded-lg shadow-md hover:shadow-lg
+                             transition-all duration-200 ease-in-out">
+                    <div class="flex items-center">
+                        <h2 class="text-3xl font-medieval text-amber-900">Cantrips</h2>
+                        <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                            ▼
+                        </span>
+                    </div>
+                </summary>
+
+                <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-300
+                          rounded-b-lg mt-[-1px] shadow-inner">
+                    <div class="prose prose-amber max-w-none text-amber-950 mb-6">
+                        <p>In Otherworld, Cantrips represent specialized magical talents that certain races and classes have access to by default. You must still choose which of these powers to develop—each representing a different approach to wielding magic.</p>
+
+                        <p class="mt-4">An astute adventurer might recognize many of these cantrips - they are, in most cases, also obtainable as scrolls and inscribable as bound spells, through Iron's Spells n' Spellbooks.</p>
+                    </div>
+
+                    <div class="grid gap-4">
+                        {Object.entries(langData.cantrips).map(([cantripId, cantrip]) => (
+                                <div class="p-4 bg-gradient-to-r from-amber-50 to-amber-100
+                                      border border-amber-200 rounded-lg">
+                                    <h3 class="text-xl font-medieval text-amber-900 mb-2"
+                                        set:html={cantrip.name} />
+                                    <div class="prose prose-amber max-w-none text-amber-950"
+                                         set:html={cantrip.description} />
+                                </div>
+                        ))}
+                    </div>
+                </div>
+            </details>
+
+            {/* Feats Section */}
+            <details class="group" open>
+                <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-100 to-amber-200
+                             border border-amber-300 rounded-lg shadow-md hover:shadow-lg
+                             transition-all duration-200 ease-in-out">
+                    <div class="flex items-center">
+                        <h2 class="text-3xl font-medieval text-amber-900">Feats</h2>
+                        <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                            ▼
+                        </span>
+                    </div>
+                </summary>
+
+                <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-300
+                          rounded-b-lg mt-[-1px] shadow-inner">
+                    <div class="prose prose-amber max-w-none text-amber-950 mb-6">
+                        <p>Feats are extraordinary abilities or specialized training, which set heroes apart from the commonfolk. As you journey through the Otherworld and grow in power, so too will your feats grow in number.</p>
+
+                        <p class="mt-4">Every <b>4</b> levels (todo: link to levels) grants you the opportunity to select a new feat, allowing you to customize your character's capabilities - up to a maximum of <b>five</b> feats at level <b>20</b>. </p>
+                        <p class="mt-4">Variant Humans begin their journey with an additional feat, and as such are capable of obtaining <b>six</b> total feats.</p>
+                    </div>
+
+                    <div class="grid gap-4">
+                        {Object.entries(langData.feats || {}).map(([featId, feat]) => (
+                                <div class="p-4 bg-gradient-to-r from-amber-50 to-amber-100
+                                      border border-amber-200 rounded-lg">
+                                    <h3 class="text-xl font-medieval text-amber-900 mb-2"
+                                        set:html={feat.name} />
+                                    <div class="prose prose-amber max-w-none text-amber-950"
+                                         set:html={feat.description} />
+                                </div>
+                        ))}
+                    </div>
+                </div>
+            </details>
+        </div>
+    </main>
+</Layout>

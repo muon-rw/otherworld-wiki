@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { fetchLangData } from '../../../utils/fetchLangData';
+
+const langData = await fetchLangData();
+
+function getIconUrl(raceId: string, subraceId?: string): string | null {
+    const baseUrl = "https://raw.githubusercontent.com/muon-rw/Otherworld-Origins/master/src/main/resources/assets/otherworldorigins/textures/item/";
+
+    if (subraceId === 'rock' || subraceId === 'forest' || subraceId === 'deep' || subraceId === 'lightfoot' || subraceId === 'stout') {
+        return null;
+    }
+
+    if (subraceId) {
+        return `${baseUrl}origin_portrait_${subraceId}.png`;
+    }
+
+    if (raceId === 'human' || raceId === 'human_variant' || raceId === 'other') {
+        return null;
+    }
+
+    if (raceId === 'elf') {
+        return `${baseUrl}origin_portrait_wood.png`;
+    }
+
+    return `${baseUrl}origin_portrait_${raceId}.png`;
+}
+
+---
+
+<Layout title="Races - Otherworld Origins">
+    <main class="container mx-auto px-4 py-8 min-h-screen bg-noise">
+        <h1 class="text-4xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
+            Otherworld - Races
+        </h1>
+
+        <div class="grid gap-6">
+            {Object.entries(langData.races).map(([raceId, race]) => (
+                    <details class="race-card group">
+                        <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                         border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                         transition-all duration-200 ease-in-out">
+                            <div class="flex items-center gap-4">
+                                {getIconUrl(raceId) && (
+                                        <img
+                                                src={getIconUrl(raceId)}
+                                                alt={`${race.name} icon`}
+                                                class="w-12 h-12 object-none object-center image-pixelated"
+                                                width="32"
+                                                height="32"
+                                        />
+                                )}
+                                <h2 class="text-2xl font-medieval text-amber-900" set:html={race.name} />
+                                <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                ▼
+              </span>
+                            </div>
+                        </summary>
+
+                        <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                      rounded-b-lg mt-[-1px] shadow-inner">
+                            <div class="mb-6 whitespace-pre-wrap prose prose-amber max-w-none text-amber-950"
+                                 set:html={race.description} />
+
+                            {Object.keys(race.subraces).length > 0 ? (
+                                    <div class="mt-8">
+                                        <h3 class="text-xl font-medieval mb-4 text-amber-800">Subraces</h3>
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            {Object.entries(race.subraces).map(([subraceId, subrace]) => (
+                                                    <details class="subrace-card">
+                                                        <summary class="cursor-pointer p-4 bg-gradient-to-r from-amber-100 to-amber-200
+                                   border border-amber-300 rounded-lg hover:shadow-md
+                                   transition-all duration-200">
+                                                            <div class="flex items-center gap-3">
+                                                                {getIconUrl(raceId, subraceId) && (
+                                                                        <img
+                                                                                src={getIconUrl(raceId, subraceId)}
+                                                                                alt={`${subrace.name} icon`}
+                                                                                class="w-10 h-10 object-none object-center image-pixelated"
+                                                                                width="32"
+                                                                                height="32"
+                                                                        />
+                                                                )}
+                                                                <h4 class="text-lg font-medieval text-amber-900" set:html={subrace.name} />
+                                                            </div>
+                                                        </summary>
+                                                        <div class="p-4 bg-amber-50 border-l border-r border-b border-amber-300
+                                rounded-b-lg mt-[-1px]">
+                                                            <div class="prose prose-amber max-w-none text-amber-950 whitespace-pre-line"
+                                                                 set:html={subrace.description} />
+                                                        </div>
+                                                    </details>
+                                            ))}
+                                        </div>
+                                    </div>
+                            ) : (
+                                    <div class="mt-4 text-amber-800 italic">
+                                        There are no subraces for {race.name}.
+                                    </div>
+                            )}
+                        </div>
+                    </details>
+            ))}
+        </div>
+    </main>
+</Layout>
+
+
