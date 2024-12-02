@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Performance Guide">
+    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
+        <div class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl font-bold mb-8 text-purple-400 text-center">
+                Performance Guide
+            </h1>
+
+            <div class="max-w-4xl mx-auto space-y-12">
+                {/* RAM Section */}
+                <section>
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Allocating RAM
+                    </h2>
+
+                    <details class="group mb-6" open>
+                        <summary class="cursor-pointer bg-purple-900/30 p-4 rounded-lg border border-purple-500/10
+                                     hover:bg-purple-900/40 transition-colors flex items-center justify-between">
+                            <span class="text-xl font-bold text-purple-200">Finding Your RAM Amount</span>
+                            <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <div class="mt-2 p-4 bg-purple-900/20 rounded-lg border border-purple-500/10">
+                            <ol class="list-decimal list-inside text-purple-100/80 space-y-2">
+                                <li>Open Task Manager (Ctrl + Shift + Esc)</li>
+                                <li>Open the performance tab</li>
+                                <li>Press the memory label, your RAM amount is written in the top right (e.g. 16 GB)</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10 mb-6">
+                        <h3 class="text-xl font-bold mb-4 text-purple-200">Allocation Guidelines</h3>
+                        <ul class="list-disc list-inside text-purple-100/80 space-y-2">
+                            <li>Less or equal to 8 GB: Allocate between 5 GB (5000 MB) to 5.5 GB (5500 MB)</li>
+                            <li>Greater than 8 GB: Allocate 8 GB (8000 MB) to 10 GB (10000 MB)</li>
+                        </ul>
+                    </div>
+
+                    <details class="group mb-6">
+                        <summary class="cursor-pointer bg-purple-900/30 p-4 rounded-lg border border-purple-500/10
+                                     hover:bg-purple-900/40 transition-colors flex items-center justify-between">
+                            <span class="text-xl font-bold text-purple-200">Launcher-Specific Instructions</span>
+                            <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <div class="mt-2 p-4 bg-purple-900/20 rounded-lg border border-purple-500/10">
+                            <ul class="text-purple-100/80 space-y-2">
+                                <li>
+                                    <a href="https://www.youtube.com/watch?v=UYYwjqBcQMQ"
+                                       target="_blank"
+                                       class="text-purple-400 hover:text-purple-300 transition-colors">
+                                        ATLauncher Instructions →
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://youtu.be/GFFRJ9RcrG8?t=32"
+                                       target="_blank"
+                                       class="text-purple-400 hover:text-purple-300 transition-colors">
+                                        CurseForge Instructions →
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="bg-red-900/20 rounded-lg p-4 border border-red-500/10">
+                        <p class="text-red-200/90">
+                            <span class="font-bold">Important:</span> Make sure you have at least 12 gigabytes of storage free
+                            on all of your drives, or your computer may be unable to properly use your system's memory!
+                        </p>
+                    </div>
+                </section>
+
+                {/* Launcher Section */}
+                <section>
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Using a Reliable Launcher
+                    </h2>
+
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10 space-y-6">
+                        <p class="text-purple-100/80">
+                            We recommend using ATLauncher as a reliable, effective, and performant launcher.
+                            Download the launcher from their website, or directly from the GitHub repository.
+                        </p>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-purple-200">Installation Steps</h3>
+                            <ol class="list-decimal list-inside text-purple-100/80 space-y-2">
+                                <li>Go to the Packs tab on the right, then click "Curseforge" on the left</li>
+                                <li>Search the modpack you wish to download</li>
+                                <li>Click "New Instance". Click "Ok" on the opted out mods warning, then click "Open All"</li>
+                                <li>Let the mods download, ATLauncher will grab them automatically</li>
+                                <li>Go to the Instances tab, and click "Play" on the modpack</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-purple-900/30 rounded-lg p-4 border border-purple-500/10">
+                            <h4 class="text-lg font-bold mb-2 text-purple-200">Transferring Data</h4>
+                            <p class="text-purple-100/80">
+                                To transfer save data from another launcher, copy the saves folder from your old instance.
+                                For map data, transfer the Xaeros Minimap or Journeymap folders.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</Layout>
