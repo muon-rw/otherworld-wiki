@@ -30,6 +30,19 @@ function getIconUrl(raceId: string, subraceId?: string): string | null {
 
 <Layout title="Races - Otherworld Origins">
     <main class="container mx-auto px-4 py-8 min-h-screen bg-noise">
+
+        {/* Banner Image */}
+        <div class="w-full mb-8 group relative z-0">
+            <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                <Image
+                        src={otherworldBanner}
+                        alt="Otherworld"
+                        class="w-full h-auto rounded-lg"
+                />
+            </div>
+        </div>
+
         <h1 class="text-4xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
             Otherworld - Races
         </h1>
