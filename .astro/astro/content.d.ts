@@ -155,12 +155,7 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"modpacks": Record<string, {
-  id: string;
-  collection: "modpacks";
-  data: any;
-}>;
-"mods": Record<string, {
+		"mods": Record<string, {
   id: string;
   collection: "mods";
   data: any;

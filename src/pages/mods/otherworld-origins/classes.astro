@@ -1,6 +1,8 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { fetchLangData } from '../../../utils/fetchLangData';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../../../assets/otherworld.png';
 
 const langData = await fetchLangData();
 ---
@@ -20,8 +22,8 @@ const langData = await fetchLangData();
             </div>
         </div>
 
-        <h1 class="text-4xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
-            Otherworld - Classes
+        <h1 class="text-6xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
+            Classes
         </h1>
 
         <div class="grid gap-6">
