@@ -64,7 +64,7 @@ function cleanDescription(description: string): string {
     return description.split(/§nSubraces§r|§nSubclasses§r/)[0].trim();
 }
 
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN;
 const MOD_CACHE_PATH = join(process.cwd(), 'src/data/cache/otherworld-origins');
 
@@ -75,15 +75,13 @@ async function getCachedData(): Promise<LangData | null> {
 
         const meta = JSON.parse(await readFile(cacheMetaFile, 'utf-8'));
         if (Date.now() - meta.timestamp < CACHE_DURATION) {
-            const data = JSON.parse(await readFile(cacheFile, 'utf-8'));
-            return data;
+            return JSON.parse(await readFile(cacheFile, 'utf-8'));
         }
         return null;
     } catch (error) {
         return null;
     }
 }
-
 async function setCachedData(data: LangData): Promise<void> {
     try {
         await mkdir(MOD_CACHE_PATH, { recursive: true });
@@ -107,15 +105,23 @@ export async function fetchLangData(): Promise<LangData> {
         if (cachedData) {
             return cachedData;
         }
-        // Fetch fresh data
+
         let data: RawLangData;
+
         if (import.meta.env.DEV) {
-            const filePath = join(process.cwd(), 'src/data/otherworld-origins/en_us.json');
-            const fileContent = await readFile(filePath, 'utf-8');
-            data = JSON.parse(fileContent);
-        } else {
+            try {
+                const filePath = join(process.cwd(), 'src/data/otherworld-origins/en_us.json');
+                const fileContent = await readFile(filePath, 'utf-8');
+                data = JSON.parse(fileContent);
+            } catch (error) {
+                // Let it fall through to GitHub fetch
+            }
+        }
+
+        // @ts-ignore
+        if (!data) {
             const response = await fetch(
-                'https://raw.githubusercontent.com/muon-rw/Otherworld-Origins/main/src/main/resources/assets/otherworldorigins/lang/en_us.json',
+                'https://raw.githubusercontent.com/muon-rw/Otherworld-Origins/refs/heads/master/src/main/resources/assets/otherworldorigins/lang/en_us.json',
                 {
                     headers: {
                         'Authorization': `token ${GITHUB_TOKEN}`,
