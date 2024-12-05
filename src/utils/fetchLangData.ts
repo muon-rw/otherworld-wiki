@@ -53,14 +53,20 @@ interface LangData {
     feats: { [key: string]: FeatData };
 }
 
+interface EnchantmentMapping {
+    enchantment: string;
+    className: string;
+    modId: string;
+}
+
+
 type RawLangData = Record<string, string>;
 
 function processText(text: string): string {
     return formatMinecraftText(text);
 }
 
-function cleanDescription(description: string): string {
-    // Remove the §nSubraces§r or §nSubclasses§r section and everything after it
+function removeSubCategoryList(description: string): string {
     return description.split(/§nSubraces§r|§nSubclasses§r/)[0].trim();
 }
 
@@ -99,9 +105,54 @@ async function setCachedData(data: LangData): Promise<void> {
     }
 }
 
+async function fetchEnchantmentMappings(): Promise<EnchantmentMapping[]> {
+    try {
+        const response = await fetch(
+            'https://raw.githubusercontent.com/muon-rw/Otherworld-Origins/refs/heads/master/src/main/java/dev/muon/otherworldorigins/restrictions/EnchantmentRestrictions.java',
+            {
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Accept': 'application/vnd.github.v3.raw'
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch enchantment mappings: ${response.status}`);
+        }
+
+        const javaContent = await response.text();
+
+        const staticBlock = javaContent.match(/static\s*{([\s\S]*?)}/)?.[1] || '';
+
+        const mappings: EnchantmentMapping[] = staticBlock
+            .split('\n')
+            .filter(line => line.includes('ENCHANTMENT_CLASS_MAP.put'))
+            .map(line => {
+                const match = line.match(/ResourceLocation\("([^"]+)"\),\s*"([^"]+)"/);
+                if (!match) return null;
+                const [_, fullEnchantment, className] = match;
+                const [modId, enchantment] = fullEnchantment.split(':');
+                return {
+                    enchantment,
+                    className,
+                    modId
+                };
+            })
+            .filter((mapping): mapping is EnchantmentMapping => mapping !== null);
+
+        return mappings;
+    } catch (error) {
+        console.error('Error fetching enchantment mappings:', error);
+        return [];
+    }
+}
+
+
 export async function fetchLangData(): Promise<LangData> {
     try {
         const cachedData = await getCachedData();
+        const enchantmentMappings = await fetchEnchantmentMappings();
         if (cachedData) {
             return cachedData;
         }
@@ -162,7 +213,7 @@ export async function fetchLangData(): Promise<LangData> {
                         processed.races[raceName].name = formatMinecraftText(value);
                     } else if (key.endsWith('.description')) {
                         processed.races[raceName].description = formatMinecraftText(
-                            cleanDescription(value)
+                            removeSubCategoryList(value)
                         );
                     }
                 }
@@ -186,7 +237,7 @@ export async function fetchLangData(): Promise<LangData> {
                             processed.classes[className].name = processText(value as string);
                         } else if (key.endsWith('.description')) {
                             processed.classes[className].description = formatMinecraftText(
-                                cleanDescription(value)
+                                removeSubCategoryList(value)
                             );
                         }
                     }
@@ -235,6 +286,28 @@ export async function fetchLangData(): Promise<LangData> {
                 }
             }
         });
+
+        for (const mapping of enchantmentMappings) {
+            if (processed.classes[mapping.className]) {
+                const enchantName = mapping.enchantment
+                    .split('_')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+
+                const className = mapping.className.charAt(0).toUpperCase() + mapping.className.slice(1);
+
+                let restrictionText = '';
+                if (mapping.modId === 'minecraft') {
+                    restrictionText = `Only ${className}s can make use of the ${enchantName} enchantment`;
+                } else {
+                    const modName = mapping.modId.charAt(0).toUpperCase() + mapping.modId.slice(1);
+                    restrictionText = `If ${modName} is installed, only ${className}s can make use of the ${enchantName} enchantment`;
+                }
+
+                processed.classes[mapping.className].description +=
+                    `\n<span class="italic">${restrictionText}</span>`;
+            }
+        }
 
         // Second pass: Add subraces and subclasses
         Object.entries(data).forEach(([key, value]) => {

@@ -23,14 +23,12 @@ const MINECRAFT_FORMATTING: FormattingStyles = {
     '§m': 'line-through',
     '§n': 'underline',
     '§o': 'italic',
-    '§r': ''  // Reset formatting
+    '§r': ''
 };
 
 export function formatMinecraftText(text: string): string {
-    // First handle the newlines by converting them to <br> tags
     let formattedText = text.replace(/\\n/g, '<br>');
 
-    // Then handle Minecraft formatting codes
     let currentClasses: string[] = [];
 
     formattedText = formattedText.replace(/§[0-9a-fk-or]/g, (match) => {
@@ -47,7 +45,6 @@ export function formatMinecraftText(text: string): string {
         return '';
     });
 
-    // Clean up any unclosed spans
     const openSpans = (formattedText.match(/<span/g) || []).length;
     const closeSpans = (formattedText.match(/<\/span>/g) || []).length;
     if (openSpans > closeSpans) {
