@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { fetchLangData } from '../../../utils/fetchLangData';
 import { Image } from 'astro:assets';
 import otherworldBanner from '../../../assets/otherworld.png';
+import FooterArrowNav from '../../../components/FooterArrowNav.astro';
 
 const langData = await fetchLangData();
 
@@ -14,6 +15,7 @@ function getIconUrl(raceId: string, subraceId?: string): string | null {
         subraceId === 'deep' ||
         subraceId === 'lightfoot' ||
         subraceId === 'stout' ||
+        subraceId === 'mountain' ||
         subraceId === 'zombie' ||
         subraceId === 'skeleton' ||
         subraceId === 'wither_skeleton') {
@@ -24,12 +26,16 @@ function getIconUrl(raceId: string, subraceId?: string): string | null {
         return `${baseUrl}origin_portrait_${subraceId}.png`;
     }
 
-    if (raceId === 'human' || raceId === 'human_variant' || raceId === 'other') {
+    if (raceId === 'human' || raceId === 'human_variant') {
         return null;
     }
 
     if (raceId === 'elf') {
         return `${baseUrl}origin_portrait_wood.png`;
+    }
+
+    if (raceId === 'other') {
+        return `${baseUrl}origin_portrait_githyanki.png`;
     }
 
     return `${baseUrl}origin_portrait_${raceId}.png`;
@@ -124,6 +130,7 @@ function getIconUrl(raceId: string, subraceId?: string): string | null {
                     </details>
             ))}
         </div>
+        <FooterArrowNav />
     </main>
 </Layout>
 

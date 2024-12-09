@@ -1,0 +1,85 @@
+---
+const allNavigation = [
+    {
+        title: 'Home',
+        path: '/'
+    },
+    {
+        title: 'Gameplay',
+        subpages: [
+            {
+                title: 'Otherworld Origins',
+                path: '/mods/otherworld-origins',
+                subpages: [
+                    { title: 'Races and Subraces', path: '/mods/otherworld-origins/races' },
+                    { title: 'Classes and Subclasses', path: '/mods/otherworld-origins/classes' },
+                    { title: 'Cantrips and Feats', path: '/mods/otherworld-origins/cantrips-and-feats' }
+                ]
+            },
+            {
+                title: 'Otherworld Apotheosis',
+                path: '/mods/otherworld-apotheosis',
+                subpages: []
+            },
+            {
+                title: 'Core Systems',
+                subpages: [
+                    { title: 'Player Leveling', path: '/gameplay/player-leveling' },
+                    { title: 'Monster Scaling', path: '/gameplay/monster-scaling' }
+                ]
+            }
+        ]
+    },
+    {
+        title: 'Install',
+        path: '/install'
+    },
+    {
+        title: 'Performance',
+        path: '/performance'
+    }
+];
+
+const allPages = allNavigation.flatMap(section => {
+    if (section.subpages) {
+        return section.subpages.flatMap(subsection => [
+            ...(subsection.path ? [{ title: subsection.title, path: subsection.path }] : []),
+            ...(subsection.subpages || [])
+        ]);
+    }
+    return [{ title: section.title, path: section.path }];
+});
+
+const currentPath = Astro.url.pathname;
+
+const currentIndex = allPages.findIndex(page => page.path === currentPath);
+
+const prevPage = currentIndex > 0 ? allPages[currentIndex - 1] : null;
+const nextPage = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
+---
+
+{(prevPage || nextPage) && (
+<nav class="flex justify-between items-center mt-12 pt-6 border-t border-amber-200">
+    {prevPage ? (
+            <a href={prevPage.path}
+               class="group flex items-center text-amber-800 hover:text-amber-600 transition-colors">
+                <svg class="w-5 h-5 mr-2 transform transition-transform group-hover:-translate-x-1"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                {prevPage.title}
+            </a>
+    ) : <div></div>}
+
+    {nextPage && (
+            <a href={nextPage.path}
+               class="group flex items-center text-amber-800 hover:text-amber-600 transition-colors">
+                {nextPage.title}
+                <svg class="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1"
+                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+    )}
+</nav>
+    )}
