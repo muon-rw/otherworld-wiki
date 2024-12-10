@@ -193,7 +193,7 @@ export async function fetchLangData(): Promise<LangData> {
             feats: {} as Record<string, FeatData>
         };
 
-        // First pass processing
+        // First pass processing: Primary Objects (Race, Class, Cantrip, Feat)
         Object.entries(data).forEach(([key, value]) => {
             if (key.startsWith('origin.otherworldorigins.race/')) {
                 const parts = key.split('/');
