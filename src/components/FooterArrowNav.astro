@@ -40,17 +40,29 @@ const allNavigation = [
     }
 ];
 
+
+// Normalize the current path by removing trailing slash
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+// Normalize all page paths in the flattened array
 const allPages = allNavigation.flatMap(section => {
     if (section.subpages) {
         return section.subpages.flatMap(subsection => [
-            ...(subsection.path ? [{ title: subsection.title, path: subsection.path }] : []),
-            ...(subsection.subpages || [])
+            ...(subsection.path ? [{
+                title: subsection.title,
+                path: subsection.path.replace(/\/$/, '')
+            }] : []),
+            ...(subsection.subpages?.map(page => ({
+                title: page.title,
+                path: page.path.replace(/\/$/, '')
+            })) || [])
         ]);
     }
-    return [{ title: section.title, path: section.path }];
+    return [{
+        title: section.title,
+        path: section.path.replace(/\/$/, '')
+    }];
 });
-
-const currentPath = Astro.url.pathname;
 
 const currentIndex = allPages.findIndex(page => page.path === currentPath);
 
