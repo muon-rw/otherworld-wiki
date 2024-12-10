@@ -2,49 +2,47 @@
 const allNavigation = [
     {
         title: 'Home',
-        path: '/'
+        path: '/index.html'
     },
     {
-        title: 'Gameplay',
+        title: 'Gameplay Guide',
         subpages: [
             {
-                title: 'Otherworld Origins',
+                title: 'Otherworld - Origins',
                 path: '/mods/otherworld-origins',
                 subpages: [
-                    { title: 'Races and Subraces', path: '/mods/otherworld-origins/races' },
-                    { title: 'Classes and Subclasses', path: '/mods/otherworld-origins/classes' },
-                    { title: 'Cantrips and Feats', path: '/mods/otherworld-origins/cantrips-and-feats' }
+                    {title: 'Races and Subraces', path: '/mods/otherworld-origins/races'},
+                    {title: 'Classes and Subclasses', path: '/mods/otherworld-origins/classes'},
+                    {title: 'Cantrips and Feats', path: '/mods/otherworld-origins/cantrips-and-feats'}
                 ]
             },
             {
-                title: 'Otherworld Apotheosis',
+                title: 'Otherworld - Apotheosis',
                 path: '/mods/otherworld-apotheosis',
                 subpages: []
             },
             {
                 title: 'Core Systems',
                 subpages: [
-                    { title: 'Player Leveling', path: '/gameplay/player-leveling' },
-                    { title: 'Monster Scaling', path: '/gameplay/monster-scaling' }
+                    {title: 'Gameplay - Player Leveling', path: '/gameplay/player-leveling'},
+                    {title: 'Gameplay - Monster Scaling', path: '/gameplay/monster-scaling'}
                 ]
             }
         ]
     },
     {
-        title: 'Install',
+        title: 'Installation',
         path: '/install'
     },
     {
-        title: 'Performance',
+        title: 'Performance Guide',
         path: '/performance'
     }
 ];
 
-
-// Normalize the current path by removing trailing slash
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
+const isOriginsTheme = currentPath.includes('/mods/otherworld-origins');
 
-// Normalize all page paths in the flattened array
 const allPages = allNavigation.flatMap(section => {
     if (section.subpages) {
         return section.subpages.flatMap(subsection => [
@@ -71,25 +69,36 @@ const nextPage = currentIndex < allPages.length - 1 ? allPages[currentIndex + 1]
 ---
 
 {(prevPage || nextPage) && (
-<nav class="flex justify-between items-center mt-12 pt-6 border-t border-amber-200">
+<nav class="flex justify-between items-center mt-12 max-w-2xl mx-auto">
     {prevPage ? (
-            <a href={prevPage.path}
-               class="group flex items-center text-amber-800 hover:text-amber-600 transition-colors">
-                <svg class="w-5 h-5 mr-2 transform transition-transform group-hover:-translate-x-1"
-                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                {prevPage.title}
-            </a>
-    ) : <div></div>}
+                    <a href={prevPage.path}
+                       class={`group flex items-center px-4 py-2 rounded-lg
+                      backdrop-blur-sm transition-all duration-200
+                      ${isOriginsTheme ?
+                           'bg-amber-100/40 text-amber-900 hover:bg-amber-200/60 hover:shadow-md' :
+                           'bg-purple-900/20 text-purple-100 hover:bg-purple-800/30 hover:shadow-purple-900/20'
+                       }`}>
+                        <svg class="w-5 h-5 mr-2 transform transition-transform group-hover:-translate-x-1"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="font-medium">{prevPage.title}</span>
+                    </a>
+        ) :
+            <div></div>}
 
     {nextPage && (
             <a href={nextPage.path}
-               class="group flex items-center text-amber-800 hover:text-amber-600 transition-colors">
-                {nextPage.title}
+               class={`group flex items-center px-4 py-2 rounded-lg
+                      backdrop-blur-sm transition-all duration-200
+                      ${isOriginsTheme ?
+                   'bg-amber-100/40 text-amber-900 hover:bg-amber-200/60 hover:shadow-md' :
+                   'bg-purple-900/20 text-purple-100 hover:bg-purple-800/30 hover:shadow-purple-900/20'
+               }`}>
+                <span class="font-medium">{nextPage.title}</span>
                 <svg class="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1"
                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
             </a>
     )}
