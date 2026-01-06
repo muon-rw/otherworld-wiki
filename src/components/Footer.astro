@@ -1,11 +1,23 @@
 ---
 import { Image } from 'astro:assets';
 import lunaPixelLogo from '../assets/lunapixel_text.webp';
+import lunaPixelBg from '../assets/lunapixel_bg.jpg';
 ---
 
-<footer class="bg-stone-900/95 border-t border-amber-900/50 py-8 mt-16">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col items-center justify-center space-y-4">
+<footer class="relative border-t border-amber-900/50 py-8 mt-16 overflow-hidden">
+    <!-- Background Image Layer -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+        <!-- Blurred main image -->
+        <div class="absolute inset-0"
+             style={`background-image: url(${lunaPixelBg.src}); background-size: cover; background-position: center; background-repeat: no-repeat; filter: blur(10px);`}></div>
+        <!-- Gradient overlays: 50% to 80% black gradient -->
+        <div class="absolute inset-0 z-20" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);"></div>
+    </div>
+    
+    <!-- Content Layer -->
+    <div class="relative z-30">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center justify-center space-y-4">
             <a href="https://lunapixel.studio" target="_blank" rel="noopener noreferrer"
                class="group transition-transform hover:scale-105">
                 <Image
@@ -16,10 +28,11 @@ import lunaPixelLogo from '../assets/lunapixel_text.webp';
                         height={60}
                 />
             </a>
-            <div class="text-stone-400 text-sm text-center">
+            <div class="text-stone-300 text-sm text-center">
                 <p class="mt-1">Otherworld is a modpack by Luna Pixel Studios</p>
                 <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
-                <p>© 2024 Luna Pixel Studios. All rights reserved.</p>
+                <p>© 2026 Luna Pixel Studios. All rights reserved.</p>
+            </div>
             </div>
         </div>
     </div>

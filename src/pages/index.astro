@@ -3,21 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import {Image} from 'astro:assets';
 import otherworldBanner from '../assets/otherworld.png';
 import homeBackground from '../assets/backgrounds/home.png';
-
-const submods = [
-    {
-        title: 'Otherworld Origins',
-        description: 'Races, Classes, and more based off of the DnD 5e Handbook.',
-        path: '/mods#origins',
-        color: 'blue'
-    },
-    {
-        title: 'Otherworld Apotheosis - Page Under Construction!',
-        description: 'Major overhauls to Apotheosis, integrating it with Otherworld\'s leveling system, re-balancing every single affix and gem, and adding tons of modpack-exclusive content.',
-        path: '/mods#apotheosis',
-        color: 'emerald'
-    }
-];
+import tavernBackground from '../assets/backgrounds/media_tavern.jpg';
 ---
 
 <Layout title="Otherworld - Wiki">
@@ -41,55 +27,96 @@ const submods = [
                     </div>
                 </div>
 
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-xl text-stone-300 font-medium tracking-wide">
-                        An ambitious, upcoming DnD-themed fantasy modpack for Minecraft. <br />Join our Discord to learn more!
-                    </p>
+                <div class="max-w-4xl mx-auto flex flex-col items-center gap-6">
+                    <a href="/setup" 
+                       class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/50 hover:-translate-y-0.5">
+                        Install
+                    </a>
+                    <a href="#overview" 
+                       class="text-stone-300 text-lg font-medium transition-all duration-200 hover:text-purple-300"
+                       style="text-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);">
+                        Read More
+                    </a>
+                    <a href="#overview" 
+                       class="animate-bounce cursor-pointer group">
+                        <svg class="w-8 h-8 text-stone-300 group-hover:text-purple-400 transition-colors" 
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <div class="container mx-auto px-4 mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
-                Popular Guides
-            </h2>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                {submods.map(mod => {
-                    const bgColor = `from-${mod.color}-900/20 to-${mod.color}-900/10`;
-                    const borderColor = `border-${mod.color}-500/10`;
-                    const textColor = `text-${mod.color}-200`;
-                    const hoverTextColor = `group-hover:text-${mod.color}-100`;
-
-                    return (
-                            <a href={mod.path}
-                               class={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl 
-                                  transition-all duration-300 hover:-translate-y-0.5
-                                  bg-gradient-to-br ${bgColor} border ${borderColor}`}>
-                                <div class="relative p-6 z-10">
-                                    <h3 class={`text-xl font-bold mb-2 ${textColor} ${hoverTextColor}
-                                           transition-colors drop-shadow-lg`}>
-                                        {mod.title}
-                                    </h3>
-                                    <p class={`${textColor}/80 ${hoverTextColor} transition-colors`}>
-                                        {mod.description}
-                                    </p>
-                                </div>
-                            </a>
-                    );
-                })}
+        <div id="overview" class="relative container mx-auto px-4 mb-16 scroll-mt-20">
+            <!-- Background Image Layer - positioned below Overview header border -->
+            <div class="absolute h-[80vh] pointer-events-none z-0 w-screen overflow-hidden"
+                 style={`left: 50%; margin-left: -50vw; top: calc(1.875rem + 1rem + 1px + 6px);`}>
+                <!-- Sharp top edge (extends 3px up, stops 1px before container edge) -->
+                <div class="absolute left-0 right-0 z-10"
+                     style={`top: -3px; height: 2px; background-image: url(${tavernBackground.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`}></div>
+                <!-- Blurred main image (offset slightly to avoid edge blur) -->
+                <div class="absolute top-[-3px] left-0 right-0 bottom-0"
+                     style={`background-image: url(${tavernBackground.src}); background-size: cover; background-position: center; background-repeat: no-repeat; filter: blur(6px);`}></div>
+                <!-- Gradient overlays: 60% at top, 30% at center, 100% at bottom -->
+                <div class="absolute inset-0 z-20" style="background: linear-gradient(to bottom, rgba(28, 25, 23, 0.6) 0%, rgba(28, 25, 23, 0.3) 50%, rgba(28, 25, 23, 1) 100%);"></div>
             </div>
-
-            <div class="mt-16">
+            
+            <!-- Content Layer -->
+            <div class="relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
-                    Coming Soon!
+                    Overview
                 </h2>
-                <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
-                    <h3 class="text-xl font-bold mb-4 text-purple-200">Documentation In Progress</h3>
-                    <ul class="list-disc list-inside text-purple-100/80 space-y-2">
-                        <li>Community Guides</li>
-                    </ul>
+                
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-purple-300">
+                        What is Otherworld?
+                    </h3>
+                    
+                    <div class="bg-stone-900/80 backdrop-blur-sm rounded-lg p-6 border border-stone-700/50">
+                        <div class="space-y-4 text-stone-300 text-lg leading-relaxed">
+                            <p>
+                                Otherworld is a Fantasy RPG modpack inspired by the hit tabletop game Dungeons and Dragons.
+                            </p>
+                            <p>
+                                Otherworld tells a story of magic and calamity set within the world of Minecraft, through an adventure packed campaign with immersive lore.
+                            </p>
+                            <p>
+                                Players will uncover secrets hidden within magical realms and fight many powerful enemies along the way; some new, some familiar.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-4">
+                            Features:
+                        </h3>
+                        <div class="bg-stone-900/80 backdrop-blur-sm rounded-lg p-6 border border-stone-700/50">
+                            <div class="space-y-4 text-stone-300 text-lg leading-relaxed">
+                                <p>
+                                    With Fantasy Races and Subraces for player characters, and Classes and Subclasses, powered by the Origins mod.
+                                </p>
+                                <p>
+                                    An RPG Leveling System with Stats and Skills + Cantrips and Feats, and Fantasy Magic Spell Casting. These come from many mods, but are all seamlessly integrated together with custom patches and content available in no other pack, to form one immersive RPG experience!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8">
+                        <p class="text-stone-300 text-lg mb-4">
+                            Still Curious?
+                        </p>
+                        <a href="https://www.curseforge.com/minecraft/modpacks/otherworld-dnd" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/50 hover:-translate-y-0.5">
+                            Learn More
+                        </a>
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     </main>
