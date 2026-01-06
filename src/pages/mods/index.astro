@@ -1,0 +1,392 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../../assets/otherworld.png';
+import FooterArrowNav from '../../components/FooterArrowNav.astro';
+import RacesContent from '../../components/otherworld-origins/RacesContent.astro';
+import ClassesContent from '../../components/otherworld-origins/ClassesContent.astro';
+import CantripsAndFeatsContent from '../../components/otherworld-origins/CantripsAndFeatsContent.astro';
+---
+
+<Layout title="Modpack Content">
+    <main class="container mx-auto px-4 py-8 min-h-screen bg-noise">
+        <div class="max-w-4xl mx-auto">
+            {/* Banner Image */}
+            <div class="w-full max-w-[90vw] md:max-w-7xl mx-auto mb-8 group relative z-0">
+                <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    <Image
+                            src={otherworldBanner}
+                            alt="Otherworld"
+                            class="w-full h-auto rounded-lg"
+                    />
+                </div>
+            </div>
+
+            <h1 class="text-6xl font-bold mb-8 text-amber-900 text-center font-medieval drop-shadow-sm">
+                Modpack Content
+            </h1>
+
+            {/* Origins Section */}
+            <section id="origins" class="scroll-mt-20">
+                <div class="mb-12">
+                    <div class="flex items-center justify-center gap-4 mb-6">
+                        <h2 class="text-5xl font-bold text-amber-900 text-center font-medieval drop-shadow-sm">
+                            Otherworld Origins
+                        </h2>
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/otherworld-origins" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="text-amber-700 hover:text-amber-900 transition-colors"
+                           title="View on CurseForge">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m6.307 5.581.391 1.675H0s.112.502.167.558c.168.279.335.614.559.837 1.06 1.228 2.902 1.73 4.409 2.009 1.06.224 2.121.28 3.181.335l1.228 3.293h.67l.391 1.061h-.558l-.949 3.07h9.321l-.949-3.07h-.558l.39-1.061h.67s.558-3.404 2.288-4.967C21.935 7.758 24 7.535 24 7.535V5.581H6.307zm9.377 8.428c-.447.279-.949.279-1.284.503-.223.111-.335.446-.335.446-.223-.502-.502-.67-.837-.781-.335-.112-.949-.056-1.786-.782-.558-.502-.614-1.172-.558-1.507v-.167c0-.056 0-.112.056-.168.111-.334.39-.669.948-.893 0 0-.39.559 0 1.117.224.335.67.502 1.061.279.167-.112.279-.335.335-.503.111-.39.111-.781-.224-1.06-.502-.446-.613-1.06-.279-1.451 0 0 .112.502.614.446.335 0 .335-.111.224-.223-.056-.167-.782-1.228.279-2.009 0 0 .669-.447 1.451-.391-.447.056-.949.335-1.116.782v.055c-.168.447-.056.949.279 1.396.223.335.502.614.614 1.06-.168-.056-.279 0-.391.112a.533.533 0 0 0-.112.502c.056.112.168.223.279.223h.168c.167-.055.279-.279.223-.446.112.111.167.391.112.558 0 .167-.112.335-.168.446-.056.112-.167.224-.223.335-.056.112-.112.224-.112.335 0 .112 0 .279.056.391.223.335.67 0 .782-.279.167-.335.111-.726-.112-1.061 0 0 .391.224.67 1.005.223.67-.168 1.451-.614 1.73z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/muon-rw/Otherworld-Origins" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="text-amber-700 hover:text-amber-900 transition-colors"
+                           title="View on GitHub">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="prose prose-amber mx-auto mb-8">
+                        <div class="p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                   border border-amber-200 rounded-lg shadow-md">
+                            <p class="text-amber-900 mb-4">
+                                Otherworld Origins is an addon for the Origins mod, designed
+                                specifically for Otherworld - carefully integrating every race, class, and ability
+                                with mods like Just Leveling [Fork], Apotheosis, Iron's Spells n' Spellbooks,
+                                Monobank, and others found in the Otherworld modpack.
+                            </p>
+                            <p class="text-amber-900 mb-4"> Bring the depth of tabletop
+                                character creation to Minecraft, and forge a unique hero with through your choice of
+                                race, subrace, class, subclass, and more!
+                            </p>
+                            <p class="text-amber-900">
+                                Click one of the categories below to learn of the paths available for a hero
+                                of the Otherworld.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-6">
+                        <details class="group">
+                            <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                     border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                                     transition-all duration-200 ease-in-out">
+                                <div class="flex items-center">
+                                    <h3 class="text-2xl font-medieval text-amber-900 group-hover:text-amber-700">
+                                        Races
+                                    </h3>
+                                    <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                                        ▼
+                                    </span>
+                                </div>
+                                <p class="text-amber-800 mt-3">
+                                    Discover the diverse races of the realm, each with unique abilities and heritage.
+                                </p>
+                            </summary>
+                            <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                                     rounded-b-lg mt-[-1px] shadow-inner">
+                                <RacesContent />
+                            </div>
+                        </details>
+
+                        <details class="group">
+                            <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                     border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                                     transition-all duration-200 ease-in-out">
+                                <div class="flex items-center">
+                                    <h3 class="text-2xl font-medieval text-amber-900 group-hover:text-amber-700">
+                                        Classes
+                                    </h3>
+                                    <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                                        ▼
+                                    </span>
+                                </div>
+                                <p class="text-amber-800 mt-3">
+                                    Master the arts of various classes, from mighty warriors to mystical spellcasters.
+                                </p>
+                            </summary>
+                            <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                                     rounded-b-lg mt-[-1px] shadow-inner">
+                                <ClassesContent />
+                            </div>
+                        </details>
+
+                        <details class="group">
+                            <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                     border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                                     transition-all duration-200 ease-in-out">
+                                <div class="flex items-center">
+                                    <h3 class="text-2xl font-medieval text-amber-900 group-hover:text-amber-700">
+                                        Cantrips & Feats
+                                    </h3>
+                                    <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                                        ▼
+                                    </span>
+                                </div>
+                                <p class="text-amber-800 mt-3">
+                                    Enhance your character with magical cantrips and powerful feats.
+                                </p>
+                            </summary>
+                            <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                                     rounded-b-lg mt-[-1px] shadow-inner">
+                                <CantripsAndFeatsContent />
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            {/* Apotheosis Section */}
+            <section id="apotheosis" class="scroll-mt-20">
+                <div class="mb-12">
+                    <div class="flex items-center justify-center gap-4 mb-6">
+                        <h2 class="text-5xl font-bold text-amber-900 text-center font-medieval drop-shadow-sm">
+                            Otherworld Apotheosis
+                        </h2>
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/otherworld-apotheosis" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="text-amber-700 hover:text-amber-900 transition-colors"
+                           title="View on CurseForge">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m6.307 5.581.391 1.675H0s.112.502.167.558c.168.279.335.614.559.837 1.06 1.228 2.902 1.73 4.409 2.009 1.06.224 2.121.28 3.181.335l1.228 3.293h.67l.391 1.061h-.558l-.949 3.07h9.321l-.949-3.07h-.558l.39-1.061h.67s.558-3.404 2.288-4.967C21.935 7.758 24 7.535 24 7.535V5.581H6.307zm9.377 8.428c-.447.279-.949.279-1.284.503-.223.111-.335.446-.335.446-.223-.502-.502-.67-.837-.781-.335-.112-.949-.056-1.786-.782-.558-.502-.614-1.172-.558-1.507v-.167c0-.056 0-.112.056-.168.111-.334.39-.669.948-.893 0 0-.39.559 0 1.117.224.335.67.502 1.061.279.167-.112.279-.335.335-.503.111-.39.111-.781-.224-1.06-.502-.446-.613-1.06-.279-1.451 0 0 .112.502.614.446.335 0 .335-.111.224-.223-.056-.167-.782-1.228.279-2.009 0 0 .669-.447 1.451-.391-.447.056-.949.335-1.116.782v.055c-.168.447-.056.949.279 1.396.223.335.502.614.614 1.06-.168-.056-.279 0-.391.112a.533.533 0 0 0-.112.502c.056.112.168.223.279.223h.168c.167-.055.279-.279.223-.446.112.111.167.391.112.558 0 .167-.112.335-.168.446-.056.112-.167.224-.223.335-.056.112-.112.224-.112.335 0 .112 0 .279.056.391.223.335.67 0 .782-.279.167-.335.111-.726-.112-1.061 0 0 .391.224.67 1.005.223.67-.168 1.451-.614 1.73z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/muon-rw/otherworldapoth" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="text-amber-700 hover:text-amber-900 transition-colors"
+                           title="View on GitHub">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="prose prose-amber mx-auto mb-8">
+                        <div class="p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                   border border-amber-200 rounded-lg shadow-md">
+                            <p class="text-amber-900 mb-4">
+                                Otherworld Apotheosis is an overhaul of the <a href="https://www.curseforge.com/minecraft/mc-mods/apotheosis" target="_blank" rel="nofollow noopener" class="text-amber-700 hover:text-amber-900 underline">Apotheosis</a> Adventure module, 
+                                designed specifically for Otherworld and closely integrated with <a href="https://www.curseforge.com/minecraft/mc-mods/auto-leveling" target="_blank" rel="nofollow noopener" class="text-amber-700 hover:text-amber-900 underline">Auto Leveling</a>, 
+                                <a href="https://www.curseforge.com/minecraft/mc-mods/justleveling-fork" target="_blank" rel="nofollow noopener" class="text-amber-700 hover:text-amber-900 underline">Just Leveling [Fork]</a>, 
+                                and <a href="https://www.curseforge.com/minecraft/mc-mods/irons-spells-n-spellbooks" target="_blank" rel="nofollow noopener" class="text-amber-700 hover:text-amber-900 underline">Iron's Spells n' Spellbooks</a>.
+                            </p>
+                            <h4 class="text-lg font-medieval text-amber-900 mt-4 mb-2">Changes to Apotheosis:</h4>
+                            <ul class="text-amber-900 mb-4 list-disc list-inside space-y-1">
+                                <li>Completely disables Bosses and Minibosses</li>
+                                <li>Completely disables existing logic for affix injection and conversion</li>
+                                <li>Completely disables existing logic for gem injection</li>
+                                <li>Bypasses existing logic for dimension-based rarity restrictions</li>
+                            </ul>
+                            <h4 class="text-lg font-medieval text-amber-900 mt-4 mb-2">New Features:</h4>
+                            <ul class="text-amber-900 mb-4 list-disc list-inside space-y-1">
+                                <li>Chance to convert dropped items or inject gems from mob drops, based on rarity ranges scaled to the slain mob's Autoleveling level</li>
+                                <li>Chance to convert chest loot or inject gems into chests, based on rarity ranges scaled to the player's aptitude stats from JustLeveling</li>
+                                <li>Adds a new <strong>Staff</strong> loot category for any Iron's Spells n' Spellbooks CastingImplement — designed to be used without Apothic Curios</li>
+                                <li>Adds several new affixes and elemental gems for Iron's Spells n' Spellbooks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-6">
+                        <details class="group">
+                            <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                     border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                                     transition-all duration-200 ease-in-out">
+                                <div class="flex items-center">
+                                    <h3 class="text-2xl font-medieval text-amber-900 group-hover:text-amber-700">
+                                        Gems
+                                    </h3>
+                                    <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                                        ▼
+                                    </span>
+                                </div>
+                                <p class="text-amber-800 mt-3">
+                                    New gems themed around various spell schools, providing spell power, resistances, and other thematic bonuses.
+                                </p>
+                            </summary>
+                            <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                                     rounded-b-lg mt-[-1px] shadow-inner">
+                                <ul class="space-y-3 text-amber-800">
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/celsius_tear.png?raw=true" alt="Celsius' Tear" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Celsius' Tear</strong> — <span class="text-cyan-700">Frost School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/dragonfire_spessartite.png?raw=true" alt="Dragonfire Spessartite" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Dragonfire Spessartite</strong> — <span class="text-orange-700">Fire School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/luminous_opal.png?raw=true" alt="Luminous Opal" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Luminous Opal</strong> — <span class="text-amber-700">Holy School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/void_umbalite.png?raw=true" alt="Void Umbalite" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Void Umbalite</strong> — <span class="text-purple-700">Ender School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/bloody_pearl.png?raw=true" alt="Bloody Pearl" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Bloody Pearl</strong> — <span class="text-red-700">Blood School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/effervescent_brimstone.png?raw=true" alt="Effervescent Brimstone" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Effervescent Brimstone</strong> — <span class="text-yellow-700">Lightning School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/golems_onyx.png?raw=true" alt="Golem's Onyx" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Golem's Onyx</strong> — <span class="text-stone-600">Generic (Spell Power)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/whispering_tentaculite.png?raw=true" alt="Whispering Tentaculite" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Whispering Tentaculite</strong> — <span class="text-fuchsia-700">Eldritch School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/mossy_agate.png?raw=true" alt="Mossy Agate" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Mossy Agate</strong> — <span class="text-green-700">Nature School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/charged_lodestone.png?raw=true" alt="Charged Lodestone" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Charged Lodestone</strong> — <span class="text-teal-700">Evocation School</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/sirens_aquamarine.png?raw=true" alt="Siren's Aquamarine" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Siren's Aquamarine</strong> — <span class="text-blue-700">Aqua School</span> <span class="text-amber-600 text-sm">(from T.O Magic n' Extras)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <img src="https://github.com/muon-rw/OtherworldApoth/blob/master/src/main/resources/assets/otherworldapoth/textures/items/gems/harmonic_geode.png?raw=true" alt="Harmonic Geode" class="gem-icon" width="32" height="32" />
+                                        <span><strong>Harmonic Geode</strong> — <span class="text-pink-700">Sound School</span> <span class="text-amber-600 text-sm">(from Alshanex's Familiars)</span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="group">
+                            <summary class="cursor-pointer p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                     border border-amber-200 rounded-lg shadow-md hover:shadow-lg
+                                     transition-all duration-200 ease-in-out">
+                                <div class="flex items-center">
+                                    <h3 class="text-2xl font-medieval text-amber-900 group-hover:text-amber-700">
+                                        Affixes
+                                    </h3>
+                                    <span class="ml-auto text-amber-700 group-open:rotate-180 transition-transform duration-200">
+                                        ▼
+                                    </span>
+                                </div>
+                                <p class="text-amber-800 mt-3">
+                                    New affixes for staves, spellbooks, armor, and weapons — including spell-triggered effects and school-specific bonuses.
+                                </p>
+                            </summary>
+                            <div class="p-6 bg-amber-50 border-l border-r border-b border-amber-200
+                                     rounded-b-lg mt-[-1px] shadow-inner space-y-6">
+                                
+                                {/* Supported Schools */}
+                                <div>
+                                    <h4 class="text-lg font-medieval text-amber-900 mb-3">Supported Spell Schools</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-cyan-100 border border-cyan-300 rounded-full text-sm text-cyan-800">❄ Frost</span>
+                                        <span class="px-3 py-1 bg-orange-100 border border-orange-300 rounded-full text-sm text-orange-800">🔥 Fire</span>
+                                        <span class="px-3 py-1 bg-amber-100 border border-amber-300 rounded-full text-sm text-amber-800">☀ Holy</span>
+                                        <span class="px-3 py-1 bg-purple-100 border border-purple-300 rounded-full text-sm text-purple-800">◈ Ender</span>
+                                        <span class="px-3 py-1 bg-red-100 border border-red-300 rounded-full text-sm text-red-800">🩸 Blood</span>
+                                        <span class="px-3 py-1 bg-yellow-100 border border-yellow-300 rounded-full text-sm text-yellow-800">⚡ Lightning</span>
+                                        <span class="px-3 py-1 bg-stone-100 border border-stone-300 rounded-full text-sm text-stone-800">✦ Generic</span>
+                                        <span class="px-3 py-1 bg-fuchsia-100 border border-fuchsia-300 rounded-full text-sm text-fuchsia-800">🐙 Eldritch</span>
+                                        <span class="px-3 py-1 bg-green-100 border border-green-300 rounded-full text-sm text-green-800">🌿 Nature</span>
+                                        <span class="px-3 py-1 bg-teal-100 border border-teal-300 rounded-full text-sm text-teal-800">🌬 Evocation</span>
+                                        <span class="px-3 py-1 bg-blue-100 border border-blue-300 rounded-full text-sm text-blue-800">🌊 Aqua</span>
+                                        <span class="px-3 py-1 bg-pink-100 border border-pink-300 rounded-full text-sm text-pink-800">🎵 Sound</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="p-4 bg-amber-100/50 border border-amber-200 rounded-lg md:col-span-2">
+                                        <h4 class="text-lg font-medieval text-amber-900 mb-2">School-Filtered Affixes</h4>
+                                        <p class="text-amber-700 text-sm">Intelligently filtered — gear only receives affixes matching the spell school(s) detected from its existing attributes. Supports items with multiple schools and upgrade orbs. Includes school-specific <strong>attribute bonuses</strong> (like +X% Fire Spell Power), <strong>spell level bonuses</strong>, and <strong>mana cost reduction</strong>.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-amber-100/50 border border-amber-200 rounded-lg">
+                                        <h4 class="text-lg font-medieval text-amber-900 mb-2">Spell Effect Affixes</h4>
+                                        <p class="text-amber-700 text-sm">Similar to Apotheosis' Mob Effect affixes, but triggered by spell actions: On Spell Heal (Self/Target) and On Spell Damage (Self/Target).</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-amber-100/50 border border-amber-200 rounded-lg">
+                                        <h4 class="text-lg font-medieval text-amber-900 mb-2">Cast Spell Affixes</h4>
+                                        <p class="text-amber-700 text-sm">Automatically cast a spell for no mana (the affix itself has a cooldown), triggered on melee attack, ranged attack, spell damage/heal, or when attacked.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-amber-100/50 border border-amber-200 rounded-lg">
+                                        <h4 class="text-lg font-medieval text-amber-900 mb-2">Telepathic Affix</h4>
+                                        <p class="text-amber-700 text-sm">A special affix for staves that causes mob drops to teleport to you when slain by magic.</p>
+                                    </div>
+                                    
+                                    <div class="p-4 bg-amber-100/50 border border-amber-200 rounded-lg">
+                                        <h4 class="text-lg font-medieval text-amber-900 mb-2">Socket Bonus Affix</h4>
+                                        <p class="text-amber-700 text-sm">Grants additional gem sockets to items, allowing for more gem customization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            {/* Core Section */}
+            <section id="core" class="scroll-mt-20">
+                <div class="mb-12">
+                    <div class="flex items-center justify-center gap-4 mb-6">
+                        <h2 class="text-5xl font-bold text-amber-900 text-center font-medieval drop-shadow-sm">
+                            Otherworld Core
+                        </h2>
+                        <a href="https://www.curseforge.com/minecraft/mc-mods/otherworld-core" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="text-amber-700 hover:text-amber-900 transition-colors"
+                           title="View on CurseForge">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m6.307 5.581.391 1.675H0s.112.502.167.558c.168.279.335.614.559.837 1.06 1.228 2.902 1.73 4.409 2.009 1.06.224 2.121.28 3.181.335l1.228 3.293h.67l.391 1.061h-.558l-.949 3.07h9.321l-.949-3.07h-.558l.39-1.061h.67s.558-3.404 2.288-4.967C21.935 7.758 24 7.535 24 7.535V5.581H6.307zm9.377 8.428c-.447.279-.949.279-1.284.503-.223.111-.335.446-.335.446-.223-.502-.502-.67-.837-.781-.335-.112-.949-.056-1.786-.782-.558-.502-.614-1.172-.558-1.507v-.167c0-.056 0-.112.056-.168.111-.334.39-.669.948-.893 0 0-.39.559 0 1.117.224.335.67.502 1.061.279.167-.112.279-.335.335-.503.111-.39.111-.781-.224-1.06-.502-.446-.613-1.06-.279-1.451 0 0 .112.502.614.446.335 0 .335-.111.224-.223-.056-.167-.782-1.228.279-2.009 0 0 .669-.447 1.451-.391-.447.056-.949.335-1.116.782v.055c-.168.447-.056.949.279 1.396.223.335.502.614.614 1.06-.168-.056-.279 0-.391.112a.533.533 0 0 0-.112.502c.056.112.168.223.279.223h.168c.167-.055.279-.279.223-.446.112.111.167.391.112.558 0 .167-.112.335-.168.446-.056.112-.167.224-.223.335-.056.112-.112.224-.112.335 0 .112 0 .279.056.391.223.335.67 0 .782-.279.167-.335.111-.726-.112-1.061 0 0 .391.224.67 1.005.223.67-.168 1.451-.614 1.73z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="prose prose-amber mx-auto mb-8">
+                        <div class="p-6 bg-gradient-to-r from-amber-50 to-amber-100
+                                   border border-amber-200 rounded-lg shadow-md">
+                            <p class="text-amber-900 mb-4">
+                                Otherworld Core holds the bulk of story content for Otherworld, as well as applies performance patches, 
+                                compatibility patches, and other tweaks made specifically with the Otherworld modpack in mind, such as 
+                                balance changes, loot table adjustments, trade adjustments, structure replacements, and more.
+                            </p>
+                            <p class="text-amber-900">
+                                If there is some feature from the Otherworld Core mod (or another Otherworld mod) that you would like to use 
+                                in your own modpack, your best course of action would be to <a href="https://lunapixel.studio/discord" target="_blank" rel="noopener noreferrer" class="text-amber-700 hover:text-amber-900 underline">contact us</a> and see if the feature could be 
+                                released as a standalone mod, not trying to use it yourself.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <FooterArrowNav />
+    </main>
+</Layout>
+
+<script>
+    // Smooth scroll behavior for anchor links
+    if (typeof window !== 'undefined') {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    }
+</script>

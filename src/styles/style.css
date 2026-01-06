@@ -36,3 +36,10 @@ a {
 a:hover {
   color: var(--color-text);
 }
+
+/* Pixel art gem icons - nearest neighbor scaling */
+.gem-icon {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

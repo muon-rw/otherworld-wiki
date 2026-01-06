@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../assets/otherworld.png';
+import InstallationContent from '../components/setup/InstallationContent.astro';
+import PerformanceContent from '../components/setup/PerformanceContent.astro';
+import TroubleshootingContent from '../components/setup/TroubleshootingContent.astro';
+import FooterArrowNav from '../components/FooterArrowNav.astro';
+---
+
+<Layout title="Setup Guide">
+    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
+        <div class="container mx-auto px-4 py-8">
+            {/* Banner Image */}
+            <div class="w-full mb-8 group relative z-0">
+                <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    <Image
+                            src={otherworldBanner}
+                            alt="Otherworld"
+                            class="w-full h-auto rounded-lg"
+                    />
+                </div>
+            </div>
+
+            <h1 class="text-4xl font-bold mb-8 text-purple-400 text-center">
+                Setup Guide
+            </h1>
+
+            {/* Navigation Links */}
+            <div class="max-w-4xl mx-auto mb-12">
+                <nav class="flex flex-wrap justify-center gap-4">
+                    <a href="#installation" class="px-4 py-2 bg-purple-900/20 rounded-lg border border-purple-500/10 text-purple-300 hover:bg-purple-900/30 hover:text-purple-200 transition-colors">
+                        Installation
+                    </a>
+                    <a href="#performance" class="px-4 py-2 bg-purple-900/20 rounded-lg border border-purple-500/10 text-purple-300 hover:bg-purple-900/30 hover:text-purple-200 transition-colors">
+                        Performance Guide
+                    </a>
+                    <a href="#troubleshooting" class="px-4 py-2 bg-purple-900/20 rounded-lg border border-purple-500/10 text-purple-300 hover:bg-purple-900/30 hover:text-purple-200 transition-colors">
+                        Troubleshooting
+                    </a>
+                </nav>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-12">
+                {/* Installation Section */}
+                <details id="installation" class="group" open>
+                    <summary class="cursor-pointer p-6 bg-purple-900/20 rounded-lg border border-purple-500/10
+                                 hover:bg-purple-900/30 transition-all duration-200">
+                        <div class="flex items-center">
+                            <h2 class="text-3xl font-bold text-purple-400 group-hover:text-purple-300">
+                                Installation
+                            </h2>
+                            <span class="ml-auto text-purple-400 group-open:rotate-180 transition-transform duration-200">
+                                ▼
+                            </span>
+                        </div>
+                    </summary>
+                    <div class="p-6 bg-purple-900/10 border-l border-r border-b border-purple-500/10
+                             rounded-b-lg mt-[-1px]">
+                        <InstallationContent />
+                    </div>
+                </details>
+
+                {/* Performance Section */}
+                <details id="performance" class="group" open>
+                    <summary class="cursor-pointer p-6 bg-purple-900/20 rounded-lg border border-purple-500/10
+                                 hover:bg-purple-900/30 transition-all duration-200">
+                        <div class="flex items-center">
+                            <h2 class="text-3xl font-bold text-purple-400 group-hover:text-purple-300">
+                                Performance Guide
+                            </h2>
+                            <span class="ml-auto text-purple-400 group-open:rotate-180 transition-transform duration-200">
+                                ▼
+                            </span>
+                        </div>
+                    </summary>
+                    <div class="p-6 bg-purple-900/10 border-l border-r border-b border-purple-500/10
+                             rounded-b-lg mt-[-1px]">
+                        <PerformanceContent />
+                    </div>
+                </details>
+
+                {/* Troubleshooting Section */}
+                <details id="troubleshooting" class="group" open>
+                    <summary class="cursor-pointer p-6 bg-purple-900/20 rounded-lg border border-purple-500/10
+                                 hover:bg-purple-900/30 transition-all duration-200">
+                        <div class="flex items-center">
+                            <h2 class="text-3xl font-bold text-purple-400 group-hover:text-purple-300">
+                                Troubleshooting
+                            </h2>
+                            <span class="ml-auto text-purple-400 group-open:rotate-180 transition-transform duration-200">
+                                ▼
+                            </span>
+                        </div>
+                    </summary>
+                    <div class="p-6 bg-purple-900/10 border-l border-r border-b border-purple-500/10
+                             rounded-b-lg mt-[-1px]">
+                        <TroubleshootingContent />
+                    </div>
+                </details>
+            </div>
+        </div>
+        <FooterArrowNav />
+    </main>
+</Layout>
+
+<script>
+    // Open the correct section based on hash
+    if (typeof window !== 'undefined') {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetSection = document.querySelector(hash);
+            if (targetSection && targetSection.tagName === 'DETAILS') {
+                targetSection.open = true;
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+    }
+</script>

@@ -1,66 +1,30 @@
 ---
 const allNavigation = [
     {
-        title: 'Home',
-        path: '/index.html'
+        title: 'Setup',
+        path: '/setup'
     },
     {
-        title: 'Gameplay Guide',
-        subpages: [
-            {
-                title: 'Otherworld - Origins',
-                path: '/mods/otherworld-origins',
-                subpages: [
-                    {title: 'Races and Subraces', path: '/mods/otherworld-origins/races'},
-                    {title: 'Classes and Subclasses', path: '/mods/otherworld-origins/classes'},
-                    {title: 'Cantrips and Feats', path: '/mods/otherworld-origins/cantrips-and-feats'}
-                ]
-            },
-            {
-                title: 'Otherworld - Apotheosis',
-                path: '/mods/otherworld-apotheosis',
-                subpages: []
-            },
-            {
-                title: 'Core Systems',
-                subpages: [
-                    {title: 'Gameplay - Player Leveling', path: '/gameplay/player-leveling'},
-                    {title: 'Gameplay - Monster Scaling', path: '/gameplay/monster-scaling'}
-                ]
-            }
-        ]
+        title: 'Modpack Content',
+        path: '/mods'
     },
     {
-        title: 'Installation',
-        path: '/install'
+        title: 'Server Owners',
+        path: '/servers'
     },
     {
-        title: 'Performance Guide',
-        path: '/performance'
+        title: 'Media',
+        path: '/media'
     }
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
-const isOriginsTheme = currentPath.includes('/mods/otherworld-origins');
+const isOriginsTheme = currentPath.includes('/mods');
 
-const allPages = allNavigation.flatMap(section => {
-    if (section.subpages) {
-        return section.subpages.flatMap(subsection => [
-            ...(subsection.path ? [{
-                title: subsection.title,
-                path: subsection.path.replace(/\/$/, '')
-            }] : []),
-            ...(subsection.subpages?.map(page => ({
-                title: page.title,
-                path: page.path.replace(/\/$/, '')
-            })) || [])
-        ]);
-    }
-    return [{
-        title: section.title,
-        path: section.path.replace(/\/$/, '')
-    }];
-});
+const allPages = allNavigation.map(section => ({
+    title: section.title,
+    path: section.path.replace(/\/$/, '')
+}));
 
 const currentIndex = allPages.findIndex(page => page.path === currentPath);
 

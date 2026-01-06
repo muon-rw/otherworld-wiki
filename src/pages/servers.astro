@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import otherworldBanner from '../assets/otherworld.png';
+import FooterArrowNav from '../components/FooterArrowNav.astro';
+---
+
+<Layout title="Server Owners">
+    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
+        <div class="container mx-auto px-4 py-8">
+            {/* Banner Image */}
+            <div class="w-full mb-8 group relative z-0">
+                <div class="transform transition-all duration-300
+                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    <Image
+                            src={otherworldBanner}
+                            alt="Otherworld"
+                            class="w-full h-auto rounded-lg"
+                    />
+                </div>
+            </div>
+
+            <h1 class="text-4xl font-bold mb-8 text-purple-400 text-center">
+                Server Guides
+            </h1>
+
+            <div class="max-w-4xl mx-auto space-y-12">
+                {/* Installation Section */}
+                <section id="installation">
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Installation
+                    </h2>
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
+                        <p class="text-purple-100/80">
+                            This section is under construction. Server installation guide coming soon!
+                        </p>
+                    </div>
+                </section>
+
+                {/* Listing your Server Section */}
+                <section id="listing-your-server">
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Listing your Server
+                    </h2>
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
+                        <p class="text-purple-100/80">
+                            This section is under construction. Information about listing your server coming soon!
+                        </p>
+                    </div>
+                </section>
+
+                {/* Server Recommendations Section */}
+                <section id="server-recommendations">
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Server Recommendations
+                    </h2>
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
+                        <p class="text-purple-100/80">
+                            This section is under construction. Server recommendations coming soon!
+                        </p>
+                    </div>
+                </section>
+
+                {/* Looking for a Host Section */}
+                <section id="looking-for-a-host">
+                    <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
+                        Looking for a Host?
+                    </h2>
+                    <div class="bg-purple-900/20 rounded-lg p-6 border border-purple-500/10">
+                        <p class="text-purple-100/80">
+                            This section is under construction. Hosting recommendations coming soon!
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <FooterArrowNav />
+    </main>
+</Layout>
