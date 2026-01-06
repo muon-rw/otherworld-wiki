@@ -3,28 +3,42 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import otherworldBanner from '../../assets/otherworld.png';
 import FooterArrowNav from '../../components/FooterArrowNav.astro';
+import mediaForest from '../../assets/backgrounds/media_forest.jpg';
 ---
 
 <Layout title="Media">
-    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
-        <div class="container mx-auto px-4 py-8">
-            {/* Banner Image */}
-            <div class="w-full mb-8 group relative z-0">
-                <div class="transform transition-all duration-300
-                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
-                    <Image
-                            src={otherworldBanner}
-                            alt="Otherworld"
-                            class="w-full h-auto rounded-lg"
-                    />
+    <main class="min-h-screen bg-stone-900 relative">
+        <!-- Background Image Layer - scrolls with content -->
+        <div class="absolute top-0 left-0 right-0 h-[90vh] pointer-events-none z-0"
+             style={`background-image: url(${mediaForest.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`}>
+            <!-- Subtle overlay to fade the image -->
+            <div class="absolute inset-0 bg-stone-900/10"></div>
+            <!-- Gradient overlays for top and bottom fade -->
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-900 via-transparent to-stone-900"></div>
+        </div>
+        
+        <!-- Content Layer -->
+        <div class="relative z-10">
+            <!-- Logo and Title Container -->
+            <div class="w-full max-w-7xl mx-auto px-4 pt-16 text-center">
+                <div class="w-full max-w-[30vw] md:max-w-[33%] mx-auto mb-8 group relative z-0">
+                    <div class="transform transition-all duration-300
+                                group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                        <Image
+                                src={otherworldBanner}
+                                alt="Otherworld"
+                                class="w-full h-auto"
+                        />
+                    </div>
                 </div>
+
+                <h1 class="text-4xl font-bold mb-8 text-purple-400">
+                    Media
+                </h1>
             </div>
-
-            <h1 class="text-4xl font-bold mb-8 text-purple-400 text-center">
-                Media
-            </h1>
-
-            <div class="max-w-4xl mx-auto space-y-12">
+            
+            <div class="container mx-auto px-4 pb-8">
+                <div class="max-w-4xl mx-auto space-y-12">
                 {/* YouTube Videos Section */}
                 <section id="youtube-videos">
                     <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
@@ -48,8 +62,9 @@ import FooterArrowNav from '../../components/FooterArrowNav.astro';
                         </p>
                     </div>
                 </section>
+                </div>
             </div>
-        </div>
+        
         <FooterArrowNav />
     </main>
 </Layout>

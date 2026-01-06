@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import {Image} from 'astro:assets';
 import otherworldBanner from '../assets/otherworld.png';
+import homeBackground from '../assets/backgrounds/home.png';
 
 const submods = [
     {
@@ -20,27 +21,33 @@ const submods = [
 ---
 
 <Layout title="Otherworld - Wiki">
-    <main class="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900">
-        <div class="text-center mb-12">
-            <div class="w-full max-w-[90vw] md:max-w-7xl mx-auto pt-2 group relative z-0">
-                <div class="transform transition-all duration-300
-                            group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
-                    <Image
-                            src={otherworldBanner}
-                            alt="Otherworld"
-                            class="w-full h-auto"
-                    />
+    <main class="min-h-screen bg-stone-900">
+        <!-- Top Hero Section with Background Image -->
+        <section class="relative w-full min-h-[60vh] flex flex-col items-center justify-center overflow-hidden"
+                 style={`background-image: url(${homeBackground.src}); background-size: cover; background-position: center; background-repeat: no-repeat;`}>
+            <!-- Gradient overlays for top and bottom fade -->
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-900 via-transparent to-stone-900 pointer-events-none"></div>
+            
+            <!-- Content Container -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 py-16 text-center">
+                <div class="w-full max-w-[90vw] md:max-w-7xl mx-auto pt-2 group relative z-0 mb-8">
+                    <div class="transform transition-all duration-300
+                                group-hover:scale-[1.02] group-hover:drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                        <Image
+                                src={otherworldBanner}
+                                alt="Otherworld"
+                                class="w-full h-auto"
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <div class="container mx-auto px-4 mt-8">
                 <div class="max-w-4xl mx-auto">
                     <p class="text-xl text-stone-300 font-medium tracking-wide">
                         An ambitious, upcoming DnD-themed fantasy modpack for Minecraft. <br />Join our Discord to learn more!
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div class="container mx-auto px-4 mb-16">
             <h2 class="text-3xl font-bold mb-8 text-purple-400 border-b border-purple-900/50 pb-4">
